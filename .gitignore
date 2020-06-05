@@ -1,0 +1,11 @@
+.idea/
+media/users/*
+!media/users/templates
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+qms/settings_local.py
+.idea/
+.DS_Store
