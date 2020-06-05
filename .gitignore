@@ -9,3 +9,4 @@ __pycache__/
 qms/settings_local.py
 .idea/
 .DS_Store
+rutech/settings_local.py
