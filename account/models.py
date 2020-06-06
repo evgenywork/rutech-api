@@ -1,6 +1,7 @@
 from django.db import models
 # from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.utils.translation import gettext_lazy as _
 
 
 class UserManager(BaseUserManager):
@@ -40,6 +41,36 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     username = None
     email = models.EmailField(verbose_name="Email", max_length=150, unique=True)
+    birthday = models.DateField(null=True, blank=True)
+    job_title = models.CharField(max_length=150, db_index=True, null=True)
+    phone = models.CharField(max_length=20, db_index=True, null=True, blank=True)
+
+    email_notify = models.BooleanField(default=True)
+    is_guest = models.BooleanField(
+        _('guest status'),
+        default=False,
+        help_text=_('Designates whether the user can log into this admin site.'),
+    )
+    is_user = models.BooleanField(
+        _('user status'),
+        default=False,
+        help_text=_('Designates whether the user can log into this admin site.'),
+    )
+    is_investor = models.BooleanField(
+        _('investor status'),
+        default=False,
+        help_text=_('Designates whether the user can log into this admin site.'),
+    )
+    is_startup = models.BooleanField(
+        _('startup status'),
+        default=False,
+        help_text=_('Designates whether the user can log into this admin site.'),
+    )
+    is_admin = models.BooleanField(
+        _('admin status'),
+        default=False,
+        help_text=_('Designates whether the user can log into this admin site.'),
+    )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']

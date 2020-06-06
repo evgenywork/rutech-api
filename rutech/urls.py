@@ -19,6 +19,10 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/base-auth/', include('rest_framework.urls')),
-    path('api/v1/chat/', include('chat.urls')),
+    path('api/v1/conversations/', include('conversation.urls')),
+    path('api/v1/rooms/', include('room.urls')),
+    path('api/v1/messages/', include('message.urls')),
     path('api/v1/backgrounds/', include('background.urls')),
+    path('api/v1/auth/', include('djoser.urls')),
+    path('api/v1/auth_token/', include('djoser.urls.authtoken')),
 ]
