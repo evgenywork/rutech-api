@@ -15,4 +15,4 @@ class Message(models.Model):
     updated_at = models.DateTimeField(verbose_name=_('Updated date'), auto_now=True, null=True)
 
     def __str__(self):
-        return self.id
+        return str(self.id)

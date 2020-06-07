@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'message',
     'event',
     'tag',
+    'networking',
 
     # Django apps
     'django.contrib.admin',

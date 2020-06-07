@@ -27,5 +27,6 @@ urlpatterns = [
     path('api/v1/backgrounds/', include('background.urls')),
     path('api/v1/events/', include('event.urls')),
     path('api/v1/tags/', include('tag.urls')),
+    path('api/v1/networkings/', include('networking.urls')),
 
 ]
