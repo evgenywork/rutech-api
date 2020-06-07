@@ -6,7 +6,6 @@ from room.models import Video
 
 class Event(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    video = models.ForeignKey(Video, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(max_length=1000, null=True, blank=True)
     is_active = models.BooleanField(_('Is active'), default=True)
@@ -17,6 +16,7 @@ class Event(models.Model):
 class EventConversation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     event = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
+    video = models.ForeignKey(Video, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(max_length=1000, null=True, blank=True)
     is_active = models.BooleanField(_('Is active'), default=True)

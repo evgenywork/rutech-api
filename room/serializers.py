@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from room.models import Room
+from room.models import Room, Video
 
 
 class RoomDetailSerializer(serializers.ModelSerializer):
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Room
@@ -13,5 +13,19 @@ class RoomDetailSerializer(serializers.ModelSerializer):
 class RoomListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
+        fields = ('id', 'title')
+
+
+class VideoDetailSerializer(serializers.ModelSerializer):
+    # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Video
+        fields = '__all__'
+
+
+class VideoListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Video
         fields = ('id', 'title')
 

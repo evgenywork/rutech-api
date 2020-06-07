@@ -15,7 +15,7 @@ class Video(models.Model):
 
 class Room(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    video = models.ForeignKey(Video, on_delete=models.SET_NULL, null=True)
+    video = models.ForeignKey(Video, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(max_length=1000, null=True, blank=True)
     room_type = models.IntegerField(choices=constants.ROOM_TYPE_CHOICES)
