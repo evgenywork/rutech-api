@@ -13,17 +13,45 @@ class RegistrationSerializer(serializers.ModelSerializer):
         }
 
     def save(self):
+        from datetime import datetime
+
+        # current date and time
+        now = datetime.now()
         user = User(
             email=self.validated_data['email'],
             first_name=self.validated_data['first_name'],
             last_name=self.validated_data['last_name'],
+
+
+            # email="test" + str(datetime.timestamp(now)) + "@",
+            # first_name=self.validated_data['first_name'],
+            # last_name=self.validated_data['last_name'],
         )
         password = self.validated_data['password'],
         password2 = self.validated_data['password2'],
 
-        if password != password2:
-            raise serializers.ValidationError({'password': 'Пароли должны совпадать'})
+        # if password != password2:
+        #     raise serializers.ValidationError({'password': 'Пароли должны совпадать'})
         user.set_password(password)
         user.save()
         return user
 
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
+
+
+class UserListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'first_name', 'last_name')
+
+
+class UserAddSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('id', 'first_name', 'last_name', 'avatar', 'is_admin', 'is_guest', 'is_investor', 'is_startup', 'is_user',
+                  'job_title', 'firma_name', 'tags')

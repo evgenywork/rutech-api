@@ -1,7 +1,16 @@
+from datetime import datetime
+
 from django.db import models
 # from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
+from rutech import constants
+from tag.models import Tag
+import time
 
 
 class UserManager(BaseUserManager):
@@ -40,7 +49,9 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     username = None
-    email = models.EmailField(verbose_name="Email", max_length=150, unique=True)
+    tags = models.ManyToManyField(Tag, null=True, blank=True, default=None)
+    password = models.CharField(_('password'), max_length=128, null=True, default=None)
+    email = models.EmailField(verbose_name="Email", max_length=150, unique=True, default="test" + str(time.time()) + "@test.de")
     birthday = models.DateField(null=True, blank=True)
     job_title = models.CharField(max_length=150, db_index=True, null=True, blank=True)
     phone = models.CharField(max_length=20, db_index=True, null=True, blank=True)
@@ -49,6 +60,8 @@ class User(AbstractUser):
     facebook = models.CharField(max_length=255, db_index=True, null=True, blank=True)
     vkontakte = models.CharField(max_length=255, db_index=True, null=True, blank=True)
     email_notify = models.BooleanField(default=True)
+    avatar = models.IntegerField(choices=constants.AVATAR_CHOICES, default=1)
+
     is_guest = models.BooleanField(
         _('guest status'),
         default=False,
@@ -79,6 +92,18 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = UserManager()
+
+
+# class UserTag(models.Model):
+#     user = models.ForeignKey('User', on_delete=models.CASCADE)
+#     tag = models.ForeignKey('Tag', on_delete=models.CASCADE)
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
+
 
 
 

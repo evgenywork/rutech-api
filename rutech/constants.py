@@ -11,3 +11,9 @@ ROOM_TYPE_CHOICES = (
     (2, _('Room chat')),
     (3, _('Individual chat')),
 )
+
+AVATAR_CHOICES = (
+    (1, _('Аватар 1')),
+    (2, _('Аватар 2')),
+    (3, _('Аватар 3')),
+)

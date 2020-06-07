@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'djoser',
+    # 'djoser',
 
 ]
 
@@ -136,11 +136,11 @@ AUTH_USER_MODEL = 'account.User'
 #     # 'allauth.account.auth_backends.AuthenticationBackend',
 # ]
 #
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework.authentication.TokenAuthentication',
-#     ),
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
 # DJOSER = {
 #     'SERIALIZERS': {
 #         'current_user': 'users.serializers.CurrentUserSerializer',
