@@ -16,13 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/base-auth/', include('rest_framework.urls')),
+    path('api/v1/account/', include('account.urls')),
     path('api/v1/conversations/', include('conversation.urls')),
     path('api/v1/rooms/', include('room.urls')),
     path('api/v1/messages/', include('message.urls')),
     path('api/v1/backgrounds/', include('background.urls')),
-    path('api/v1/auth/', include('djoser.urls')),
-    path('api/v1/auth_token/', include('djoser.urls.authtoken')),
+    path('api/v1/events/', include('event.urls')),
+    path('api/v1/tags/', include('tag.urls')),
+    # path('api/v1/auth/', include('djoser.urls')),
+    # path('api/v1/auth_token/', include('djoser.urls.authtoken')),
 ]

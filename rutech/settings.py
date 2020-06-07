@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'room',
     'background',
     'message',
+    'event',
+    'tag',
 
     # Django apps
     'django.contrib.admin',
@@ -129,21 +131,21 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 AUTH_USER_MODEL = 'account.User'
 # AUTHENTICATION_BACKENDS = ['account.backends.EmailBackend']
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    # 'allauth.account.auth_backends.AuthenticationBackend',
-]
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-    ),
-}
-DJOSER = {
-    'SERIALIZERS': {
-        'current_user': 'users.serializers.CurrentUserSerializer',
-        'user_create': 'users.serializers.UserCreateSerializer',
-    }
-}
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     # 'allauth.account.auth_backends.AuthenticationBackend',
+# ]
+#
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework.authentication.TokenAuthentication',
+#     ),
+# }
+# DJOSER = {
+#     'SERIALIZERS': {
+#         'current_user': 'users.serializers.CurrentUserSerializer',
+#         'user_create': 'users.serializers.UserCreateSerializer',
+#     }
+# }
 
 from .settings_local import *

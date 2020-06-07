@@ -1,5 +1,5 @@
 from django.contrib import admin
-from conversation.models import Conversation
+from conversation.models import Conversation, Room
 
 
 # Register your models here.

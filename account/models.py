@@ -42,9 +42,12 @@ class User(AbstractUser):
     username = None
     email = models.EmailField(verbose_name="Email", max_length=150, unique=True)
     birthday = models.DateField(null=True, blank=True)
-    job_title = models.CharField(max_length=150, db_index=True, null=True)
+    job_title = models.CharField(max_length=150, db_index=True, null=True, blank=True)
     phone = models.CharField(max_length=20, db_index=True, null=True, blank=True)
-
+    firma_name = models.CharField(max_length=150, db_index=True, null=True, blank=True)
+    linkedin = models.CharField(max_length=255, db_index=True, null=True, blank=True)
+    facebook = models.CharField(max_length=255, db_index=True, null=True, blank=True)
+    vkontakte = models.CharField(max_length=255, db_index=True, null=True, blank=True)
     email_notify = models.BooleanField(default=True)
     is_guest = models.BooleanField(
         _('guest status'),
