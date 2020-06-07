@@ -27,7 +27,7 @@ class EventMessageDetailSerializer(serializers.ModelSerializer):
 class EventMessageListSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventMessage
-        fields = ('id', 'title')
+        fields = ('id', 'message')
 
 
 class EventConversationDetailSerializer(serializers.ModelSerializer):
