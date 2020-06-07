@@ -12,5 +12,5 @@ class NetworkingDetailSerializer(serializers.ModelSerializer):
 class NetworkingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Networking
-        fields = ('id', 'title')
+        fields = '__all__'
 

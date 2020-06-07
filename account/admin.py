@@ -15,6 +15,8 @@ class UserAdmin(DjangoUserAdmin):
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'is_admin', 'is_guest', 'is_investor', 'is_startup',
                                        'is_user', 'groups', 'user_permissions')}),
         (_('Firma'), {'fields': ('job_title',  'firma_name')}),
+
+
     )
     add_fieldsets = (
         (None, {

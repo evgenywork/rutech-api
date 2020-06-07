@@ -49,7 +49,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     username = None
-    tags = models.ManyToManyField(Tag, null=True, blank=True, default=None)
+    tags = models.ManyToManyField(Tag, null=True, blank=True)
     password = models.CharField(_('password'), max_length=128, null=True, default=None)
     email = models.EmailField(verbose_name="Email", max_length=150, unique=True, default="test" + str(time.time()) + "@test.de")
     birthday = models.DateField(null=True, blank=True)
