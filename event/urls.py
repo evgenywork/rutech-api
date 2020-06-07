@@ -14,6 +14,6 @@ urlpatterns = [
     path('message/detail/<int:pk>/', EventMessageDetailView.as_view()),
 
     path('conversation/create/', EventConversationCreate.as_view()),
-    path('conversation/all/', EventListView.as_view()),
+    path('conversation/all/', EventConversationListView.as_view()),
     path('conversation/detail/<int:pk>/', EventConversationDetailView.as_view()),
 ]
